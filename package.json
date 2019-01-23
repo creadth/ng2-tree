@@ -1,0 +1,113 @@
+{
+  "name": "ng2-tree",
+  "version": "2.0.0-rc.11",
+  "description": "angular2 component for visualizing data that can be naturally represented as a tree",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Georgii Rychko",
+    "email": "rychko.georgiy@gmail.com"
+  },
+  "homepage": "https://github.com/valor-software/ng2-tree",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:valor-software/ng2-tree.git"
+  },
+  "bugs": {
+    "url": "https://github.com/valor-software/ng2-tree/issues"
+  },
+  "private": true,
+  "keywords": [
+    "tree",
+    "ng2",
+    "angular2",
+    "ng2-tree",
+    "branch",
+    "tree-view",
+    "branchy",
+    "angular2-tree-view",
+    "expand",
+    "collapse",
+    "recursive"
+  ],
+  "scripts": {
+    "compile": "ngc -p tsconfig-aot.json && node umd-bundler.js",
+    "clean": "rimraf coverage build dist dist-demo bundles factories .publish",
+    "pre:publish": "npm run clean && npm run test && npm run lint && npm run compile && mkdir -p dist && cp -R src/styles.css README.md media dist",
+    "post:publish": "npm run build:demo && gh-pages -d dist-demo",
+    "start": "ng serve",
+    "build:demo": "ng build",
+    "test": "ng test -sr",
+    "test:w": "ng test -w",
+    "test:cov": "ng test -sr -cc",
+    "lint": "ng lint --type-check",
+    "e2e": "ng e2e",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -p angular",
+    "github-release": "conventional-github-releaser -p angular",
+    "version": "npm run changelog && git add CHANGELOG.md",
+    "postversion": "git push origin master && git push --tags && npm run github-release && node publish.js",
+    "webdriver-update": "node ./node_modules/protractor/bin/webdriver-manager update",
+    "precommit": "pretty-quick --staged",
+    "prettier": "prettier --write '{.,src,test}/**/*.ts'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.12.0",
+    "@angular/cli": "^7.2.2",
+    "@angular/common": "7.2.2",
+    "@angular/compiler": "7.2.2",
+    "@angular/compiler-cli": "7.2.2",
+    "@angular/core": "7.2.2",
+    "@angular/forms": "7.2.2",
+    "@angular/http": "7.2.2",
+    "@angular/language-service": "7.2.2",
+    "@angular/platform-browser": "7.2.2",
+    "@angular/platform-browser-dynamic": "7.2.2",
+    "@angular/router": "7.2.2",
+    "@types/jasmine": "3.3.7",
+    "@types/node": "10.12.18",
+    "alertifyjs": "1.11.2",
+    "codelyzer": "4.5.0",
+    "conventional-changelog": "3.0.5",
+    "conventional-changelog-cli": "2.0.11",
+    "conventional-github-releaser": "3.1.2",
+    "core-js": "2.6.3",
+    "font-awesome": "4.7.0",
+    "gh-pages": "2.0.1",
+    "husky": "1.3.1",
+    "jasmine-core": "3.3.0",
+    "jasmine-data-provider": "2.2.0",
+    "jasmine-spec-reporter": "4.2.1",
+    "karma": "3.1.4",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-cli": "2.0.0",
+    "karma-coverage-istanbul-reporter": "2.0.4",
+    "karma-jasmine": "2.0.1",
+    "karma-jasmine-html-reporter": "1.4.0",
+    "karma-phantomjs-launcher": "1.0.4",
+    "phantomjs-polyfill": "0.0.2",
+    "phantomjs-prebuilt": "2.1.16",
+    "prettier": "1.16.1",
+    "pretty-quick": "1.10.0",
+    "protractor": "5.4.2",
+    "rimraf": "2.6.3",
+    "rxjs": "6.3.3",
+    "rxjs-tslint-rules": "4.15.0",
+    "shelljs": "0.8.3",
+    "systemjs-builder": "0.16.13",
+    "ts-node": "8.0.1",
+    "tslint": "5.8.0",
+    "tslint-config-valorsoft": "2.2.1",
+    "typescript": "3.2.4",
+    "uuid": "3.3.2",
+    "webpack": "4.29.0",
+    "zone.js": "0.8.29"
+  },
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
