@@ -31,7 +31,7 @@ import 'core-js/es6/string';
 import 'core-js/es6/array';
 /** Evergreen browsers require these. **/
 import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
+
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
